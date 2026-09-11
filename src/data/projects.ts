@@ -12,7 +12,7 @@ import THEME_REVEAL from './Resources/01themeReveal.jpg';
 import ACCEPTANCE02 from './Resources/02acceptance.jpg';
 import FACEBOOK_INVITE02 from './Resources/02facebookinvite.jpg';
 import GLASSMORPHISM02 from './Resources/02glassmorphism.png';
-import LOGO_CONCEPT02 from './Resources/02logoConcept2.jpg';
+import LOGO_CONCEPT02 from './Resources/02logoconcept2.jpg';
 import BOOK_COVER_03 from './Resources/03bookcovertemp01.jpg';
 import COMPUTER_SHOP_03 from './Resources/03Computershop.jpg';
 import LEVELSTAIR_03 from './Resources/03levelstair0301.jpg';
