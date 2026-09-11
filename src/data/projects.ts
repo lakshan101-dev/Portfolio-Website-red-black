@@ -10,7 +10,7 @@ import LEVELZERO9_1 from './Resources/01LEVELZERO9-1.jpg';
 import LEVELZERO10 from './Resources/01LEVELZERO10.jpg';
 import THEME_REVEAL from './Resources/01themeReveal.jpg';
 import ACCEPTANCE02 from './Resources/02acceptance.jpg';
-import FACEBOOK_INVITE02 from './Resources/02facebookInvite.jpg';
+import FACEBOOK_INVITE02 from './Resources/02facebookinvite.jpg';
 import GLASSMORPHISM02 from './Resources/02glassmorphism.png';
 import LOGO_CONCEPT02 from './Resources/02logoConcept2.jpg';
 import BOOK_COVER_03 from './Resources/03bookcovertemp01.jpg';
