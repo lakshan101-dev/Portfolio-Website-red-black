@@ -58,27 +58,55 @@ export const PRESET_VIDEOS: { id: string; name: string; description: string; url
 
 interface VideoBackgroundProps {
   videoConfig: VideoConfig;
+  lightMode?: boolean;
 }
 
 export const VideoBackground: React.FC<VideoBackgroundProps> = ({
   videoConfig,
+  lightMode = false,
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const isGif = isAnimatedImageOrGif(videoConfig.url, videoConfig.mediaType);
 
   useEffect(() => {
+    if (lightMode) return;
     if (!isGif && videoRef.current) {
       videoRef.current.playbackRate = videoConfig.playbackRate || 0.85;
       videoRef.current.play().catch(() => {
         // Autoplay policy fallback
       });
     }
-  }, [videoConfig.url, videoConfig.playbackRate, isGif]);
+  }, [videoConfig.url, videoConfig.playbackRate, isGif, lightMode]);
+
+  const mediaFilter = lightMode
+    ? `blur(${videoConfig.blurAmount}px) brightness(1.08) contrast(0.95) saturate(0.85)`
+    : `blur(${videoConfig.blurAmount}px) brightness(0.85) contrast(1.1)`;
+
+  const overlayColor = lightMode
+    ? 'rgba(245, 245, 245, 0.78)'
+    : `rgba(6, 6, 8, ${videoConfig.overlayOpacity})`;
+
+  const overlayBlur = Math.max(
+    videoConfig.blurAmount,
+    lightMode ? 10 : 6
+  );
+
+  const sheenClass = lightMode
+    ? 'bg-gradient-to-b from-black/[0.04] via-transparent to-white/70'
+    : 'bg-gradient-to-b from-white/[0.04] via-transparent to-black/60';
+
+  const textureClass = lightMode
+    ? 'opacity-[0.14] mix-blend-multiply'
+    : 'opacity-[0.25] mix-blend-screen';
+
+  const textureDotColor = lightMode
+    ? 'rgba(0, 0, 0, 0.06)'
+    : 'rgba(255, 255, 255, 0.12)';
 
   return (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10 bg-[#060608]">
-      {/* 1. Animated Visual Layer (GIF image or Video) */}
-      {videoConfig.url ? (
+    <div className={`fixed inset-0 pointer-events-none overflow-hidden -z-10 ${lightMode ? 'bg-[#F5F5F5]' : 'bg-[#060608]'}`}>
+      {/* 1. Animated Visual Layer (GIF image or Video) - hidden in light mode */}
+      {videoConfig.url && !lightMode ? (
         isGif ? (
           <img
             key={videoConfig.url}
@@ -86,7 +114,7 @@ export const VideoBackground: React.FC<VideoBackgroundProps> = ({
             alt="Background Animation"
             className="absolute inset-0 w-full h-full object-cover select-none"
             style={{
-              filter: `blur(${videoConfig.blurAmount}px) brightness(0.85) contrast(1.1)`,
+              filter: mediaFilter,
               transform: videoConfig.blurAmount > 0 ? 'scale(1.05)' : 'scale(1)',
               willChange: 'transform, filter',
             }}
@@ -102,7 +130,7 @@ export const VideoBackground: React.FC<VideoBackgroundProps> = ({
             playsInline
             className="absolute inset-0 w-full h-full object-cover"
             style={{
-              filter: `blur(${videoConfig.blurAmount}px) brightness(0.85) contrast(1.1)`,
+              filter: mediaFilter,
               transform: videoConfig.blurAmount > 0 ? 'scale(1.05)' : 'scale(1)',
               willChange: 'transform, filter',
             }}
@@ -110,33 +138,33 @@ export const VideoBackground: React.FC<VideoBackgroundProps> = ({
         )
       ) : (
         /* Sleek fallback placeholder when no background media is loaded */
-        <div className="absolute inset-0 bg-gradient-to-br from-[#120203] via-[#070708] to-[#000000]" />
+        <div className={`absolute inset-0 ${lightMode ? 'bg-gradient-to-br from-[#FFF4F4] via-[#F5F5F5] to-[#ECECEC]' : 'bg-gradient-to-br from-[#120203] via-[#070708] to-[#000000]'}`} />
       )}
 
       {/* 2. Glassmorphism Tint / Dark Dimmer Overlay (Guarantees text readability) */}
       <div
         className="absolute inset-0 transition-opacity duration-300 pointer-events-none"
         style={{
-          backgroundColor: `rgba(6, 6, 8, ${videoConfig.overlayOpacity})`,
-          backdropFilter: `blur(${Math.max(videoConfig.blurAmount, 6)}px)`,
-          WebkitBackdropFilter: `blur(${Math.max(videoConfig.blurAmount, 6)}px)`,
+          backgroundColor: overlayColor,
+          backdropFilter: `blur(${overlayBlur}px)`,
+          WebkitBackdropFilter: `blur(${overlayBlur}px)`,
         }}
       />
 
       {/* 3. Subtle Glass Specular Sheen & Light Gradients */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/[0.04] via-transparent to-black/60 pointer-events-none" />
+      <div className={`absolute inset-0 ${sheenClass} pointer-events-none`} />
 
       {/* 4. Fine Glass Micro Texture for authentic frosted feel */}
       <div
-        className="absolute inset-0 opacity-[0.25] mix-blend-screen pointer-events-none"
+        className={`absolute inset-0 ${textureClass} pointer-events-none`}
         style={{
-          backgroundImage: `radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px)`,
+          backgroundImage: `radial-gradient(${textureDotColor} 1px, transparent 1px)`,
           backgroundSize: '32px 32px',
         }}
       />
 
       {/* 5. Edge Vignette to keep viewport focus on central content */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_45%,_rgba(0,0,0,0.6)_100%)] pointer-events-none" />
+      <div className={`absolute inset-0 pointer-events-none ${lightMode ? 'bg-[radial-gradient(ellipse_at_center,_transparent_45%,_rgba(0,0,0,0.18)_100%)]' : 'bg-[radial-gradient(ellipse_at_center,_transparent_45%,_rgba(0,0,0,0.6)_100%)]'}`} />
     </div>
   );
 };
