@@ -68,8 +68,6 @@ export const INITIAL_PROJECTS: DesignProject[] = [
 
 liveReviewLink: '',
 dimensions: '1000 x 1000 px (1:1 Square Grid)',
-description:
-  'Dark 8-bit gaming countdown graphic featuring heavy pixelated typography, a stark red center-stripe accent, and clean sans-serif callouts on a textured black backdrop.',
 featuredSpan: 'square'
 },
 
