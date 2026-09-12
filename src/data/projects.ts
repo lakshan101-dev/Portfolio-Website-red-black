@@ -47,7 +47,7 @@ import RESULT02_09 from './Resources/09result02.png';
 export const INITIAL_PROJECTS: DesignProject[] = [
 {
   id: '01',
-  designName: 'Level Zero #9: The Game Jam // Countdown Graphic',
+  designName: 'Level Zero #9: The Game Jam Countdown Graphic',
   coreCategory: 'Layout & Typography',
   softwareTools: 'Photoshop',
   impactMetric: '150+ assets executed across digital & physical print',
@@ -66,32 +66,47 @@ export const INITIAL_PROJECTS: DesignProject[] = [
     THEME_REVEAL
   ],
 
+  imageTitles: [
+    'Countdown Graphic — Concept 1',
+    'Countdown Graphic — Concept 2',
+    'Countdown Graphic — Concept 3',
+    'Countdown Graphic — Concept 4',
+    'Level 11 Teaser',
+    'Level Zero #9 Cover',
+    'Level Zero #9 — Alternate',
+    'Level Zero #10 Teaser',
+    'Theme Reveal'
+  ],
+
 featuredSpan: 'square'
 },
 
 {
   id: '02',
-  designName: 'Velox Autonomous Logistics // Brand Identity Kit',
+  designName: 'Creative Partnerships & Community Connections',
   coreCategory: 'Brand Identity',
   softwareTools: 'Illustrator, Photoshop',
   impactMetric: 'Complete 40-page brand guide & corporate stationery suite',
-
   thumbnailImageUrl: FACEBOOK_INVITE02,
-
   images: [
-    
-    FACEBOOK_INVITE02,
+        FACEBOOK_INVITE02,
     ACCEPTANCE02,
     GLASSMORPHISM02,
     LOGO_CONCEPT02
   ],
 
+  imageTitles: [
+    'Facebook Event Invite',
+    'Acceptance Letter Design',
+    'Glassmorphism Brand Asset',
+    'Logo Concept'
+  ],
 
   featuredSpan: 'wide'
 },
 {
   id: '03',
-  designName: 'NeoTech Quantum Series // Social Media Asset Suite',
+  designName: 'Latest Commercial & Promotional Creative Concepts',
   coreCategory: 'Ad Creative',
   softwareTools: 'Photoshop, Illustrator',
   impactMetric: '320k+ impressions & 4.8x CTR engagement lift',
@@ -105,11 +120,19 @@ featuredSpan: 'square'
     LIGHT_TUITION_03,
     RB_UNOFFICIAL_03
   ],
+
+  imageTitles: [
+    'Book Cover Template',
+    'Computer Shop Ad',
+    'Level Stair Design',
+    'Light Tuition Poster',
+    'RB Unofficial Poster'
+  ],
   featuredSpan: 'normal'
 },
 {
   id: '04',
-  designName: 'Q4 Investor Board Deck // Executive Office Presentation',
+  designName: 'Executive & Creative Professional CV Concepts',
   coreCategory: 'Office Support & Presentation',
   softwareTools: 'Microsoft Office 365, PowerPoint, Excel',
   impactMetric: '45-slide C-suite investor deck finalized under 48h turnaround',
@@ -121,11 +144,16 @@ featuredSpan: 'square'
     CV03_04
   ],
 
+  imageTitles: [
+    'Investor Deck — Cover Slide',
+    'Investor Deck — Overview Slide'
+  ],
+
   featuredSpan: 'normal'
 },
   {
   id: '05',
-  designName: 'Swiss Minimalist Design Exhibition // Typographic Print',
+  designName: 'Multidisciplinary Print & Digital Media Layouts',
   coreCategory: 'Layout & Typography',
   softwareTools: 'Illustrator, InDesign',
   impactMetric: 'Curated selection for regional design symposium showcase',
@@ -138,11 +166,17 @@ featuredSpan: 'square'
     VIOLET_FLOWER_05
   ],
 
+  imageTitles: [
+    'F11 Poster',
+    'The Invitation',
+    'Violet Retro Flower'
+  ],
+
   featuredSpan: 'normal'
 },
     {
   id: '07',
-  designName: 'Kinetics High-Impact Advertising Campaign // OmniFit Creative',
+  designName: 'High-Octane Commercial Art & Sports Graphics Showcase',
   coreCategory: 'Ad Creative',
   softwareTools: 'Photoshop, Illustrator',
   impactMetric: '98% client satisfaction across 24 ad variations delivered',
@@ -160,11 +194,22 @@ featuredSpan: 'square'
     SUPRA_07
   ],
 
+  imageTitles: [
+    'Legend on the Track',
+    'Cosmetic Campaign Poster',
+    'Football Poster (CMYK)',
+    'Italian Campaign Ad',
+    'JBL Poster',
+    'Nike Poster',
+    'Instagram Post',
+    'Supra Poster'
+  ],
+
  featuredSpan: 'normal'
 },
     {
   id: '09',
-  designName: 'Roastery 88 Artisan Roast // Packaging & Label Architecture',
+  designName: 'Brand Identity & Commercial Product Design Showcase',
   coreCategory: 'Brand Identity',
   softwareTools: 'Illustrator, Photoshop',
   impactMetric: '12 SKU retail coffee bean packaging rollout & dieline specs',
@@ -177,6 +222,14 @@ featuredSpan: 'square'
     RASABO_09,
     RESULT01_09,
     RESULT02_09
+  ],
+
+  imageTitles: [
+    'Coffee Cafe Packaging',
+    'Coffee Test Print',
+    'Rasabo Jun Label',
+    'Final Result — Front',
+    'Final Result — Back'
   ],
 
     featuredSpan: 'normal'
