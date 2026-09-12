@@ -66,8 +66,6 @@ export const INITIAL_PROJECTS: DesignProject[] = [
     THEME_REVEAL
   ],
 
-liveReviewLink: '',
-dimensions: '1000 x 1000 px (1:1 Square Grid)',
 featuredSpan: 'square'
 },
 
@@ -88,12 +86,6 @@ featuredSpan: 'square'
     LOGO_CONCEPT02
   ],
 
-  liveReviewLink: 'http',
-
-  dimensions: 'Vector Master Kit & SVG Iconography',
-
-  description:
-    'Comprehensive brand identity system including dynamic monogram logo, color architecture, stationery set, and corporate guidelines.',
 
   featuredSpan: 'wide'
 },
@@ -113,14 +105,6 @@ featuredSpan: 'square'
     LIGHT_TUITION_03,
     RB_UNOFFICIAL_03
   ],
-
-  liveReviewLink: 'http',
-
-  dimensions: '1080x1080 Feed & 1080x1920 Stories',
-
-  description:
-    'Performance-driven multi-variant social media creative suite optimized for paid conversions and high-impact visual storytelling.',
-
   featuredSpan: 'normal'
 },
 {
@@ -136,13 +120,6 @@ featuredSpan: 'square'
     CV02_04,
     CV03_04
   ],
-
-  liveReviewLink: 'http',
-
-  dimensions: '16:9 Widescreen 4K Master Template',
-
-  description:
-    'High-stakes corporate presentation support: custom data charts, Excel data modeling integrations, and structured visual storytelling for board meetings.',
 
   featuredSpan: 'normal'
 },
@@ -160,13 +137,6 @@ featuredSpan: 'square'
     INVITATION_05,
     VIOLET_FLOWER_05
   ],
-
-  liveReviewLink: 'http',
-
-  dimensions: '500mm x 700mm Architectural Print',
-
-  description:
-    'Modernist experimental poster emphasizing asymmetric balance, baseline grid discipline, and stark monochrome contrast.',
 
   featuredSpan: 'normal'
 },
@@ -190,14 +160,7 @@ featuredSpan: 'square'
     SUPRA_07
   ],
 
-  liveReviewLink: 'http',
-
-  dimensions: 'Display Ad Matrix & Billboard Creative',
-
-  description:
-    'Dynamic fitness and activewear campaign emphasizing motion blurs, crisp typographic overlays, and high-conversion callout treatments.',
-
-  featuredSpan: 'normal'
+ featuredSpan: 'normal'
 },
     {
   id: '09',
@@ -216,13 +179,6 @@ featuredSpan: 'square'
     RESULT02_09
   ],
 
-  liveReviewLink: 'http',
-
-  dimensions: 'Custom Die-cut Pouch & Foil Stamp Spec',
-
-  description:
-    'Tactile packaging design with metallic ink accents, custom origin badge icons, and strict adherence to manufacturing dielines.',
-
-  featuredSpan: 'normal'
+    featuredSpan: 'normal'
 },
 ];
