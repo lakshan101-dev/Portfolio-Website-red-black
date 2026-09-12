@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { INITIAL_PROJECTS } from './data/projects';
 import { DesignProject } from './types';
 import { Navbar } from './components/Navbar';
@@ -18,6 +18,21 @@ import { ProjectModal } from './components/ProjectModal';
 import { VideoBackground, VideoConfig } from './components/VideoBackground';
 import { glideDropScroll } from './utils/scroll';
 import pinterestVideo from './Pinterest.mp4';
+
+type Theme = 'dark' | 'light';
+
+const getInitialTheme = (): Theme => {
+  if (typeof window === 'undefined') return 'dark';
+
+  try {
+    return window.localStorage.getItem('portfolio-theme') === 'light'
+      ? 'light'
+      : 'dark';
+  } catch {
+    return 'dark';
+  }
+};
+
 /**
  * ============================================================================
  * 🎬 BACKGROUND MEDIA CONFIGURATION
@@ -33,7 +48,7 @@ import pinterestVideo from './Pinterest.mp4';
 export const BACKGROUND_MEDIA_CONFIG: VideoConfig = {
   // Put your video (.mp4/.webm) or GIF (.gif) file path or URL here:
   url: pinterestVideo,
-  
+
   name: 'Ambient Background',
 
   // Dark dimmer tint opacity (0.0 to 1.0) - keeps portfolio text razor-sharp:
@@ -49,6 +64,26 @@ export const BACKGROUND_MEDIA_CONFIG: VideoConfig = {
 export default function App() {
   const [projects] = useState<DesignProject[]>(INITIAL_PROJECTS);
   const [activeProject, setActiveProject] = useState<DesignProject | null>(null);
+  const [theme, setTheme] = useState<Theme>(getInitialTheme);
+
+  useEffect(() => {
+    const isLight = theme === 'light';
+
+    document.documentElement.classList.toggle('light', isLight);
+    document.body.classList.toggle('light', isLight);
+
+    try {
+      window.localStorage.setItem('portfolio-theme', theme);
+    } catch {
+      // Ignore storage errors
+    }
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((currentTheme) =>
+      currentTheme === 'light' ? 'dark' : 'light'
+    );
+  };
 
   // Smooth "Glide and Drop" scroll handler
   const scrollToSection = (id: string) => {
@@ -56,12 +91,23 @@ export default function App() {
   };
 
   return (
-    <div className="relative min-h-screen w-full bg-transparent text-[#FFFFFF] flex flex-col antialiased selection:bg-[#E50914] selection:text-white">
+    <div
+      className={`relative min-h-screen w-full bg-transparent text-[#FFFFFF] flex flex-col antialiased selection:bg-[#E50914] selection:text-white ${
+        theme === 'light' ? 'light' : ''
+      }`}
+    >
       {/* Background Media Layer with Glassmorphic Overlay */}
-      <VideoBackground videoConfig={BACKGROUND_MEDIA_CONFIG} />
+      <VideoBackground
+        videoConfig={BACKGROUND_MEDIA_CONFIG}
+        lightMode={theme === 'light'}
+      />
 
       {/* Navigation Bar */}
-      <Navbar onNavigate={scrollToSection} />
+      <Navbar
+        onNavigate={scrollToSection}
+        theme={theme}
+        onToggleTheme={toggleTheme}
+      />
 
       {/* Main Content */}
       <main className="flex-grow w-full relative z-10">
@@ -103,4 +149,3 @@ export default function App() {
     </div>
   );
 }
-
