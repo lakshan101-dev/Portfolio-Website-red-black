@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
-import { Mail, Phone, Menu, X, ArrowUpRight } from 'lucide-react';
+import { Mail, Phone, Menu, X, ArrowUpRight, Moon, Sun } from 'lucide-react';
 
 interface NavbarProps {
   onNavigate: (sectionId: string) => void;
+  theme: 'dark' | 'light';
+  onToggleTheme: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
+export const Navbar: React.FC<NavbarProps> = ({
+  onNavigate,
+  theme,
+  onToggleTheme,
+}) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleNavClick = (id: string) => {
@@ -68,6 +74,19 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
 
         {/* Desktop CTA Button */}
         <div className="hidden md:flex items-center gap-3">
+          <button
+            type="button"
+            onClick={onToggleTheme}
+            aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+            className="p-2.5 bg-white/[0.04] hover:bg-white/[0.08] active:scale-95 border border-white/[0.12] text-[#A3A3A3] hover:text-[#FFFFFF] rounded-md transition-all cursor-pointer shadow-[0_4px_16px_rgba(0,0,0,0.25)]"
+          >
+            {theme === 'light' ? (
+              <Moon className="w-4 h-4" />
+            ) : (
+              <Sun className="w-4 h-4" />
+            )}
+          </button>
+
           <a
             href="mailto:chamudithalakshan264@gmail.com"
             className="px-5 py-2.5 bg-[#E50914] hover:bg-[#ff1e27] active:scale-95 text-[#FFFFFF] text-sm font-semibold rounded-md transition-all shadow-[0_4px_16px_rgba(229,9,20,0.35)] hover:shadow-[0_6px_24px_rgba(229,9,20,0.5)] flex items-center gap-2"
@@ -77,14 +96,29 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
           </a>
         </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 text-[#A3A3A3] hover:text-[#FFFFFF] transition-colors"
-          aria-label="Toggle menu"
-        >
-          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
+        {/* Mobile Theme + Menu Buttons */}
+        <div className="md:hidden flex items-center gap-2">
+          <button
+            type="button"
+            onClick={onToggleTheme}
+            aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+            className="p-2 text-[#A3A3A3] hover:text-[#FFFFFF] bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.12] rounded-md transition-all"
+          >
+            {theme === 'light' ? (
+              <Moon className="w-5 h-5" />
+            ) : (
+              <Sun className="w-5 h-5" />
+            )}
+          </button>
+
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="p-2 text-[#A3A3A3] hover:text-[#FFFFFF] transition-colors"
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Dropdown */}
