@@ -1,5 +1,11 @@
 import { DesignProject } from '../types';
 
+// New placeholders for Project 06 - Replace with your actual paths
+import MOCKUP_IMG_1 from './Resources/06mockup01.jpg';
+import MOCKUP_IMG_2 from './Resources/06mockup02.jpg';
+import MOCKUP_IMG_3 from './Resources/06mockup03.jpg';
+import MOCKUP_IMG_4 from './Resources/06mockup04.jpg';
+
 import CNT1 from './Resources/01CNT1.jpg';
 import CNT2 from './Resources/01CNT2.jpg';
 import CNT3 from './Resources/01CNT3.jpg';
@@ -172,6 +178,27 @@ featuredSpan: 'square'
     'Violet Retro Flower'
   ],
 
+  featuredSpan: 'normal'
+},
+{
+  id: '06',
+  designName: 'High-Contrast Identity & Product Mockup Frameworks',
+  coreCategory: 'Product & OOH Mockups',
+  softwareTools: 'Photoshop, Illustrator',
+  impactMetric: 'Premium retail packaging concepts & ultra-bold commercial layouts',
+  thumbnailImageUrl: MOCKUP_IMG_1, 
+  images: [
+    MOCKUP_IMG_1,
+    MOCKUP_IMG_2,
+    MOCKUP_IMG_3,
+    MOCKUP_IMG_4
+  ],
+  imageTitles: [
+    'Sol Beverage Concept — 500ml Can',
+    'Monde Coffee Pouch — Retail Concept',
+    'Gold-D Botanical Serum — Cosmetic Bottle',
+    'Lakshan Identity Design — OOH Billboard'
+  ],
   featuredSpan: 'normal'
 },
     {
